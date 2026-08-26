@@ -1,18 +1,18 @@
 create database flipkart_db;
 
 create table products(
-Product_ID serial primary key,
+product_id serial primary key,
 name varchar(100) not null,
 sku_code char(8) unique not null check (char_length(sku_code)=8),
-Price numeric(10,2) default 0 check (Price>=0),
-Stock_Quantity int default 0 check (Stock_Quantity>=0),
+price numeric(10,2) default 0 check (price>=0),
+stock_Quantity int default 0 check (stock_Quantity>=0),
 is_available boolean default true,
-Category text not null,
-Added_on date default now(),
-Last_update date default now()
+category text not null,
+added_on date default now(),
+last_update date default now()
 );
 
-INSERT INTO products (name, sku_code, Price, Stock_Quantity, is_available, Category) VALUES
+INSERT INTO products (name, sku_code, price, stock_Quantity, is_available, category) VALUES
 ('Wireless Noise-Canceling Headphones', 'WNC-1001', 149.99, 45, true, 'Electronics'),
 ('Ergonomic Leather Office Chair', 'EGC-2042', 229.50, 12, true, 'Furniture'),
 ('Stainless Steel Water Bottle (1L)', 'SSB-3089', 19.99, 120, true, 'Home & Kitchen'),
@@ -25,3 +25,46 @@ INSERT INTO products (name, sku_code, Price, Stock_Quantity, is_available, Categ
 ('Bluetooth Portable Speaker', 'BPS-0078', 49.99, 0, false, 'Electronics');
 
 select * from products;
+
+-- 1.
+select name, price from products;
+
+-- 2.
+select * from products where (Category = 'Electronics');
+
+-- 3.
+select category from products group by category;
+
+-- 4.
+select category, count(*) from products
+group by category 
+having count(*) > 1;
+
+-- 5.
+select * from products order by price; --ASC
+
+select * from products order by price DESC;
+
+-- 6.
+SELECT * FROM PRODUCTS LIMIT 3;
+
+-- 7.
+select name as item_name, price as item_price from products;
+
+-- 8.
+select distinct category from products;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
