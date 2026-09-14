@@ -43,12 +43,34 @@ numbers = [7,5,2,7,4,1,9,6,3]
 
 # Find the second greatest element
 
+maximum = second = 0
+
+for i in numbers:
+    
+    if(i>maximum):
+        second = maximum
+        maximum = i
+        
+    elif (maximum>i>second):
+        second = i
+        
+print(second)
 
 # Check if List is sorted or not.
             
+# def isSorted(nums):
+#     for i in range (len(nums)-1):
+#         if(nums[i]>nums[i+1]):
+#             return False
 
+#     return True
 
+# print(isSorted(numbers))
 
+def isSorted(nums):
+    return all(nums[i]<=nums[i+1] for i in range(len(nums)-1))
+
+print(isSorted(numbers))
 
 
 
